@@ -16,14 +16,14 @@
                 <i class="fas fa-globe-europe"></i>
                 <select v-show="inputType == 'country'" v-model="countrySelected">
                     <option value="">Choisissez un pays</option>
-                    <option v-for="option in countryOption" :value="option.id">{{ option.name }}</option>
+                    <option v-for="option in countryOption" :key="option.id">{{ option.name }}</option>
                 </select>
             </li>
 
             <li v-on:click="searchInput('grapes')" class="grapes">
                 <i class="fas fa-wine-glass-alt"></i>
                 <div class="radio-container" v-if="inputType == 'grapes'">
-                    <div v-for="grape in grapesRadio" class="radio">
+                    <div v-for="grape in grapesRadio" :key="grape.name" class="radio">
                         <label :for="grape.name">{{ grape.name }}</label>
                         <input v-model="grapesSelected" :id="grape.name" :value="grape.name" type="radio"
                             class="radio-button">
@@ -132,7 +132,7 @@ export default defineComponent({
     }
   },
   computed: {
-    searchWines () {
+    searchWines (): WineDetail[] {
       return this.wines.filter((wine) => {
         return (
           wine.name.toLowerCase().includes(this.searchKey.toLowerCase()) &&
