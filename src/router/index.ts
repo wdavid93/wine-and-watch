@@ -4,13 +4,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "overdue" */ '../views/WineView.vue')
+    component: () => import(/* webpackChunkName: "overdue" */ '../views/WelcomeView.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/wines',
+    name: 'wines',
+    component: () => import(/* webpackChunkName: "overdue" */ '../views/WineView.vue')
+  },
 ]
 
 const router = createRouter({
